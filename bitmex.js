@@ -178,21 +178,30 @@ setInterval(async function() {
 
         liq += ' margin > 66%'
         let result = await bitmex.private_get_position({'symbol':'XBTUSD'})
+         
         for (var r in result) {
-        if (result[r].currentQty < 0) {
+           if (result[r].unrealisedPnlPcnt > 0.05){
+             if (result[r].currentQty < 0) {
+            bitmex.createMarketBuyOrder('BTC/USD', result[r].currentQty / 4)
+        } else {
+
+            bitmex.createMarketSellOrder('BTC/USD', result[r].currentQty / 4)   
+    
+        }
+           }
+         if (result[r].currentQty < 0) {
             selldo = true;
             buydo = false;
-            bitmexc.createMarketBuyOrder('BTC/USD', tar / 10)
-            bitmex.createLimitBuyOrder('BTC/USD', -1 * result[r].currentQty, lb);
+            bitmex.createMarketBuyOrder('BTC/USD', tar / 10)
         } else {
             buydo = true;
             selldo = false;
 
-            bitmex.createMarketBuyOrder('BTC/USD', tar / 10)   
-            bitmex.createLimitSellOrder('BTC/USD', result[r].currentQty, lb);
+            bitmex.createMarketSellOrder('BTC/USD', tar / 10)   
     
-        }
-    }
+        
+}
+}
 }
 }, 10500)
 // a failsafe that triggers if portfolio loses a certan %
