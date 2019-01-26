@@ -182,22 +182,22 @@ setInterval(async function() {
         for (var r in result) {
            if (result[r].unrealisedPnlPcnt > 0.05){
              if (result[r].currentQty < 0) {
-            bitmex.createMarketBuyOrder('BTC/USD', result[r].currentQty / 4)
+            bitmex.createMarketBuyOrder('BTC/USD', result[r].currentQty / 40)
         } else {
 
-            bitmex.createMarketSellOrder('BTC/USD', result[r].currentQty / 4)   
+            bitmex.createMarketSellOrder('BTC/USD', result[r].currentQty / 40)   
     
         }
            }
          if (result[r].currentQty < 0) {
             selldo = true;
             buydo = false;
-            bitmex.createMarketBuyOrder('BTC/USD', tar / 10)
+            bitmex.createMarketBuyOrder('BTC/USD', result[r].currentQty / 10)
         } else {
             buydo = true;
             selldo = false;
 
-            bitmex.createMarketSellOrder('BTC/USD', tar / 10)   
+            bitmex.createMarketSellOrder('BTC/USD', result[r].currentQty / 10)   
     
         
 }
