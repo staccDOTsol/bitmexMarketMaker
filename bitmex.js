@@ -182,10 +182,10 @@ setInterval(async function() {
         for (var r in result) {
            if (result[r].unrealisedPnlPcnt > 0.05){
              if (result[r].currentQty < 0) {
-            bitmex.createMarketBuyOrder('BTC/USD', result[r].currentQty / 40)
+            bitmex.createMarketBuyOrder('BTC/USD', result[r].currentQty / 2)
         } else {
 
-            bitmex.createMarketSellOrder('BTC/USD', result[r].currentQty / 40)   
+            bitmex.createMarketSellOrder('BTC/USD', result[r].currentQty / 2)   
     
         }
            }
