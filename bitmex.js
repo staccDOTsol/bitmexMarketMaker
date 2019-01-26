@@ -304,7 +304,7 @@ setInterval(async function() {
 
 setInterval(function() {
 
-    tar = (btcNow * ha) / 40;
+    tar = (btcNow * ha) / 4
 }, 5000)
 
 // sometimes orders get stuck. .. cancel them all!
@@ -445,7 +445,7 @@ setInterval(async function() {
             }
         }
         if (lb != buying) {
-            tar = (btcNow * ha) / 40;
+            tar = (btcNow * ha) / 4
 
         }
         if (gogo == true && gogoFour < 10 && bv > 30000) {
